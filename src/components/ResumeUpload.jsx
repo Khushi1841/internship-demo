@@ -58,7 +58,7 @@ const ResumeUpload = ({ onUploadSuccess, email }) => {
     formData.append('email', email);
 
     try {
-      const res = await fetch('http://localhost:3000/api/users/resume', {
+      const res = await fetch('https://internship-demo-tna6.onrender.com/api/users/resume', {
         method: 'POST',
         body: formData
       });

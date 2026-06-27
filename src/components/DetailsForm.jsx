@@ -41,7 +41,7 @@ const DetailsForm = ({ onSubmitSuccess, initialName, email, prefillData }) => {
     setError('');
 
     try {
-      const res = await fetch('http://localhost:3000/api/users/details', {
+      const res = await fetch('https://internship-demo-tna6.onrender.com/api/users/details', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, ...formData })

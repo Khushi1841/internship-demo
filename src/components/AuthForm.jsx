@@ -19,7 +19,7 @@ const AuthForm = ({ onAuthSuccess }) => {
     try {
       if (isLogin) {
         // Direct Login
-        const res = await fetch('http://localhost:3000/api/auth/login', {
+        const res = await fetch('https://internship-demo-tna6.onrender.com/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
@@ -32,7 +32,7 @@ const AuthForm = ({ onAuthSuccess }) => {
         }
       } else {
         // Signup requires OTP
-        const res = await fetch('http://localhost:3000/api/auth/request-otp', {
+        const res = await fetch('https://internship-demo-tna6.onrender.com/api/auth/request-otp', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password, name })
