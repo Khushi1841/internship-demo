@@ -10,7 +10,7 @@ const AdminDashboard = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('https://internship-demo-tna6.onrender.com/api/admin/users');
+      const res = await fetch('https://internship-demo-1.onrender.com/api/admin/users');
       if (!res.ok) throw new Error("Failed to fetch users");
       const data = await res.json();
       setUsers(data);
@@ -120,7 +120,7 @@ const AdminDashboard = () => {
                     <td style={{ padding: '16px 20px' }}>
                       {user.resume_path ? (
                         <a 
-                          href={`https://internship-demo-tna6.onrender.com/uploads/${user.resume_path}`} 
+                          href={`https://internship-demo-1.onrender.com/uploads/${user.resume_path}`} 
                           target="_blank" 
                           rel="noreferrer"
                           style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--accent-primary)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }}

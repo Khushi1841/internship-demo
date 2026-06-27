@@ -42,7 +42,7 @@ const OtpVerification = ({ email, onVerify, onBack, previewUrl }) => {
     
     setLoading(true);
     try {
-      const res = await fetch('https://internship-demo-tna6.onrender.com/api/auth/verify-otp', {
+      const res = await fetch('https://internship-demo-1.onrender.com/api/auth/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp: otpValue })
