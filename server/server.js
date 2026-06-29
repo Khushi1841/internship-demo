@@ -134,10 +134,7 @@ app.post('/api/auth/request-otp', (req, res) => {
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.error("Email send error:", error);
-          return res.json({ 
-            success: true, 
-            message: `[DEMO MODE] Email sending failed. Please use this OTP to proceed: ${otp}`
-          });
+          return res.status(500).json({ error: "Failed to send email. Check your Gmail App Password." });
         }
         
         let previewUrl = null;
