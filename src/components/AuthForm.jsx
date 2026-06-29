@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, User, ArrowRight, Loader2, Lock, Sparkles } from 'lucide-react';
+import { Mail, User, ArrowRight, Loader2, Lock, Sparkles, Eye, EyeOff } from 'lucide-react';
 
 const AuthForm = ({ onAuthSuccess }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -8,6 +8,7 @@ const AuthForm = ({ onAuthSuccess }) => {
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -120,14 +121,22 @@ const AuthForm = ({ onAuthSuccess }) => {
             <div style={{ position: 'relative' }}>
               <Lock size={20} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 className="form-input"
-                style={{ paddingLeft: '48px' }}
+                style={{ paddingLeft: '48px', paddingRight: '48px' }}
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <button 
+                type="button" 
+                onClick={() => setShowPassword(!showPassword)}
+                style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                tabIndex="-1"
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
             </div>
           </div>
 

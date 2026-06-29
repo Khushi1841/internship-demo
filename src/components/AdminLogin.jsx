@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Lock, ArrowRight, X } from 'lucide-react';
+import { Lock, ArrowRight, X, Eye, EyeOff } from 'lucide-react';
 
 const AdminLogin = ({ onSuccess, onCancel }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,16 +31,24 @@ const AdminLogin = ({ onSuccess, onCancel }) => {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group" style={{ position: 'relative' }}>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             className="form-input"
             placeholder="Admin Password"
             value={password}
             onChange={(e) => { setPassword(e.target.value); setError(''); }}
-            style={{ textAlign: 'center', letterSpacing: '2px' }}
+            style={{ textAlign: 'center', letterSpacing: '2px', paddingRight: '40px', paddingLeft: '40px' }}
             autoFocus
           />
+          <button 
+            type="button" 
+            onClick={() => setShowPassword(!showPassword)}
+            style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            tabIndex="-1"
+          >
+            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+          </button>
         </div>
         {error && <p style={{ color: 'var(--danger)', fontSize: '0.85rem', textAlign: 'center', marginBottom: '15px', marginTop: '-10px' }}>{error}</p>}
         <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
